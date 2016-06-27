@@ -41,7 +41,7 @@ import ketai.ui.*;
 import ketai.sensors.*;
 
 KetaiSensor sensor;
-PVector gyroscope, accelerometer;
+PVector magneticField, accelerometer;
 float light, proximity, rotX, rotY, rotZ, doubleX, doubleY, tapX, tapY, longX, longY, flickX, flickY, flickEX, flickEY, flickV;
 float Size = 10;
 float Angle = 0;
@@ -63,7 +63,7 @@ void setup() {
   sensor.start();
   sensor.list();
   accelerometer = new PVector();
-  gyroscope = new PVector();
+  magneticField = new PVector();
   orientation(LANDSCAPE);
   textSize(32);
   textAlign(CENTER);
@@ -103,9 +103,9 @@ void draw() {
       + "y: " + nfp(accelerometer.y, 1, 2) + "\n" 
       + "z: " + nfp(accelerometer.z, 1, 2) + "\n"
       + "Gyroscope :" + "\n" 
-      + "x: " + nfp(gyroscope.x, 1, 2) + "\n"
-      + "y: " + nfp(gyroscope.y, 1, 2) + "\n" 
-      + "z: " + nfp(gyroscope.z, 1, 2) + "\n"
+      + "x: " + nfp(magneticField.x, 1, 2) + "\n"
+      + "y: " + nfp(magneticField.y, 1, 2) + "\n" 
+      + "z: " + nfp(magneticField.z, 1, 2) + "\n"
       + "Light Sensor : " + light + "\n" 
       + "Proximity Sensor : " + proximity + "\n"
       + "Rotation : "
@@ -123,9 +123,9 @@ void draw() {
     myOtherMessage.add(accelerometer.x);
     myOtherMessage.add(accelerometer.y);
     myOtherMessage.add(accelerometer.z);
-    myOtherMessage.add(gyroscope.x);
-    myOtherMessage.add(gyroscope.y);
-    myOtherMessage.add(gyroscope.z);
+    myOtherMessage.add(magneticField.x);
+    myOtherMessage.add(magneticField.y);
+    myOtherMessage.add(magneticField.z);
     myOtherMessage.add(proximity);
     myOtherMessage.add(Size);
     myOtherMessage.add(Angle);
@@ -163,6 +163,6 @@ public boolean surfaceTouchEvent(MotionEvent event) {
   //call to keep mouseX, mouseY, etc updated
   super.surfaceTouchEvent(event);
 
-  //forward event to class for processing
+  //forward event to class fgor processing
   return gesture.surfaceTouchEvent(event);
 }
