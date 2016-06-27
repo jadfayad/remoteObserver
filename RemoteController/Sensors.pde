@@ -5,9 +5,9 @@ void onAccelerometerEvent(float x, float y, float z)
   accelerometer.set(x, y, z);
 }
 
-void onGyroscopeEvent(float x, float y, float z)
+void onMagneticFieldEvent(float x, float y, float z, long time, int accuracy)
 {
-  gyroscope.set(x, y, z);
+  magneticField.set(x, y, z);
 }
 
 void onRotationVectorEvent(float x, float y, float z)
